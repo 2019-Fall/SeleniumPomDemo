@@ -1,19 +1,24 @@
 from features.ui.all_imports import *
 
 logger = utils.create_logger()
+data = utils.yaml_loader(".\data\configs.yaml")
+
 
 # @pytest.mark.run(order=2) from pytest-ordering
 @pytest.mark.screenshots
 def test_take_screenshots(browser):
     """takes screenshots if no element found"""
 
-    url = "http://the-internet.herokuapp.com/login"
-    browser.get(url)
+    # Data
+    url = data['url_login']
+    username = data['username']
+    password = data['password']
 
+    browser.get(url)
     logger.info("loggin page started..")
     login_page = Login(browser)
-    login_page.enter_username("tomsmith")
-    login_page.enter_password("SuperSecretPassword!")
+    login_page.enter_username(username)
+    login_page.enter_password(password)
     login_page.click_login()
     logger.info("logged in, taking screenshot")
     sleep(5)
@@ -88,7 +93,7 @@ def test_hover_action(browser):
     # log each step with print
     browser.execute_script("window.scrollBy(0, 1000);")
     sleep(5)
-    element = browser.find_element(By.XPATH,"//button[@id='mousehover']")
+    element = browser.find_element(By.XPATH, "//button[@id='mousehover']")
     actions = ActionChains(browser)
     # Sample action from ActionChains
     # actions.key_down(Keys.CONTROL)

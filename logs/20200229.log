@@ -1,3 +1,4 @@
-INFO 2020-02-29 02:13:28,441 - loggin page started..
-INFO 2020-02-29 02:13:28,841 - logged in, taking screenshot
-INFO 2020-02-29 02:13:34,139 - test completed!
+INFO 2020-02-29 03:54:08,403 - loggin page started..
+INFO 2020-02-29 03:54:08,822 - logged in, taking screenshot
+INFO 2020-02-29 03:54:14,142 - screenshot is taken : ./screenshots/-20200229-035413.png
+INFO 2020-02-29 03:54:14,142 - test completed!

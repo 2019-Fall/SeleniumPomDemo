@@ -1,5 +1,6 @@
 import time
 import logging
+import yaml
 
 def get_timestamp():
     return time.strftime("%Y%m%d-%H%M%S")
@@ -12,3 +13,14 @@ def create_logger(file=""):
                         format='%(levelname)s %(asctime)s - %(message)s', 
                         filemode='w')
     return logging.getLogger()
+
+def yaml_loader(filepath):
+    """Loads a yaml file"""
+    with open(filepath, 'r') as file_descriptor:
+        data = yaml.load(file_descriptor)
+    return data
+
+def yaml_dump(filepath, data):
+    """Dumps data to a yaml file"""
+    with open(filepath, 'w') as file_descriptor:
+        yaml.dump(data, file_descriptor)

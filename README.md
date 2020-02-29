@@ -313,7 +313,7 @@ You can see in the output that the fruits have been sorted in the alphabetical o
 In this brief tutorial, we learned how to install Python's YAML library (pyyaml) to manipulate YAML formatted files. We covered loading the contents of a YAML file into our Python program as dictionaries, as well as serializing Python dictionaries in to YAML files and storing their keys. The library is quite brief and only offers basic functionalities.
 
 Find out more about YAML [here.](https://yaml.org/)
-
+Find short video [here](https://youtu.be/cdLNKUoMc6c)
 ----
 
 ## References:
