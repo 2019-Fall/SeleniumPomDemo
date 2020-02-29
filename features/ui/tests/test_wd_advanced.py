@@ -1,5 +1,6 @@
 from features.ui.all_imports import *
 
+logger = utils.create_logger()
 
 @pytest.mark.screenshots
 def test_take_screenshots(browser):
@@ -8,15 +9,15 @@ def test_take_screenshots(browser):
     url = "http://the-internet.herokuapp.com/login"
     browser.get(url)
 
-    print("loggin page started..")
+    logger.info("loggin page started..")
     login_page = Login(browser)
     login_page.enter_username("tomsmith")
     login_page.enter_password("SuperSecretPassword!")
     login_page.click_login()
-    print("logged in, taking screenshot")
+    logger.info("logged in, taking screenshot")
     sleep(5)
     login_page.take_screenshot()
-    print('test completed!')
+    logger.info('test completed!')
     assert "The Internet" == login_page.get_title
 
 
