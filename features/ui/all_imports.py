@@ -9,3 +9,4 @@ import features.ui.step_definitions.utilities as utils
 from selenium.common.exceptions import NoSuchElementException
 import pytest
 from features.ui.pages.login_page import *
+from features.ui.pages.base_page import BasePage

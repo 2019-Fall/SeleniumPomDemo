@@ -8,27 +8,16 @@ def test_take_screenshots(browser):
     url = "http://the-internet.herokuapp.com/login"
     browser.get(url)
 
-    try:
-        # use the following Login steps we created previously
-        print("loggin page started..")
-        login_page = Login(browser)
-        login_page.enter_username("tomsmith")
-        login_page.enter_password("SuperSecretPassword!")
-        login_page.click_login()
-        
-        print("logged in, taking screenshot")
-        sleep(10)
-        # assert "titlename" == login_page.get_title
-
-        filepath = "./screenshots/" + utils.get_timestamp() + ".png"
-        browser.save_screenshot(filepath)
-        print('test completed!')
-
-    except NoSuchElementException:
-        print("Something went wrong!")
-        filepath = "./screenshots/error-" + utils.get_timestamp() + ".png"
-        browser.save_screenshot(filepath)
-        raise
+    print("loggin page started..")
+    login_page = Login(browser)
+    login_page.enter_username("tomsmith")
+    login_page.enter_password("SuperSecretPassword!")
+    login_page.click_login()
+    print("logged in, taking screenshot")
+    sleep(5)
+    login_page.take_screenshot()
+    print('test completed!')
+    assert "The Internet" == login_page.get_title
 
 
 @pytest.mark.popupwindow
@@ -97,7 +86,7 @@ def test_hover_action(browser):
     # log each step with print
     browser.execute_script("window.scrollBy(0, 1000);")
     sleep(5)
-    element = browser.find_element_by_xpath("//button[@id='mousehover']")
+    element = browser.find_element(By.XPATH,"//button[@id='mousehover']")
     actions = ActionChains(browser)
     # Sample action from ActionChains
     # actions.key_down(Keys.CONTROL)

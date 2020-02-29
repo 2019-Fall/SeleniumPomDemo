@@ -1,11 +1,6 @@
 from features.ui.all_imports import *
-
-class BasePage():
-    def __init__(self, driver):
-        self.driver = driver
-
-    def click_element(self, element):
-        element.click()
+from features.ui.pages.base_page import BasePage
+from selenium.webdriver.common.by import By
 
 
 class Login(BasePage):
@@ -13,35 +8,30 @@ class Login(BasePage):
     # LOCATORS
     username_box = "//input[@id='username']"
     password_box = "//input[@id='password']"
-    login_button =  "//i[@class='fa fa-2x fa-sign-in']"
+    login_button = "//i[@class='fa fa-2x fa-sign-in']"
 
     # ACTIONS ON THE PAGE
     def enter_username(self, uname):
-        username = self.driver.find_element_by_xpath(self.username_box)
-        username.clear()
-        username.send_keys(uname)
+        self.enter_text_xpath(self.username_box, uname)
 
     def enter_password(self, phrase):
-        password = self.driver.find_element_by_xpath(self.password_box)
-        password.clear()
-        password.send_keys(phrase)
+        self.enter_text_xpath(self.password_box, phrase)
 
     def click_login(self):
-        self.driver.find_element_by_xpath(self.ogin_button).click()
+        self.click_element_by_xpath(self.login_button)
 
     @property
     def get_title(self):
-        return self.driver.title
+        return self.driver.title.strip()
+
 
 class PopUpWindow(BasePage):
 
     openwindow_button = "//button[@id='openwindow']"
     search_box = "//input[@id='search-courses']"
 
-
     def click_openwindow(self):
-        element = self.driver.find_element_by_xpath(self.openwindow_button)
-        element.click()
+        self.click_element_by_xpath(self.openwindow_button)
 
     def search_text(self, text):
         element = self.driver.find_element_by_xpath(self.search_box)
