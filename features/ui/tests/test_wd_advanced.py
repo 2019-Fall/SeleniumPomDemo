@@ -2,6 +2,7 @@ from features.ui.all_imports import *
 
 logger = utils.create_logger()
 
+# @pytest.mark.run(order=2) from pytest-ordering
 @pytest.mark.screenshots
 def test_take_screenshots(browser):
     """takes screenshots if no element found"""
